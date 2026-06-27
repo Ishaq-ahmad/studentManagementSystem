@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Student</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      body {
+        background: #eef2f7;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 30px;
+      }
+
+      .container {
+        width: 900px;
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        overflow: hidden;
+      }
+
+      .header {
+        background: #0d6efd;
+        color: white;
+        text-align: center;
+        padding: 20px;
+      }
+
+      .header h1 {
+        font-size: 30px;
+      }
+
+      .content {
+        padding: 35px;
+      }
+
+      form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+
+      .form-group {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .full {
+        grid-column: 1/3;
+      }
+
+      label {
+        margin-bottom: 8px;
+        font-weight: bold;
+        color: #444;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 15px;
+        transition: 0.3s;
+      }
+
+      input:focus,
+      textarea:focus {
+        border-color: #0d6efd;
+        outline: none;
+        box-shadow: 0 0 6px rgba(13, 110, 253, 0.25);
+      }
+
+      textarea {
+        resize: none;
+        height: 90px;
+      }
+
+      .buttons {
+        grid-column: 1/3;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 10px;
+      }
+
+      .btn {
+        text-decoration: none;
+        border: none;
+        padding: 13px 35px;
+        border-radius: 6px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .update {
+        background: #198754;
+        color: white;
+      }
+
+      .update:hover {
+        background: #157347;
+      }
+
+      .cancel {
+        background: #dc3545;
+        color: white;
+      }
+
+      .cancel:hover {
+        background: #bb2d3b;
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          width: 100%;
+        }
+
+        form {
+          grid-template-columns: 1fr;
+        }
+
+        .full,
+        .buttons {
+          grid-column: 1;
+        }
+
+        .buttons {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>Edit Student</h1>
+      </div>
+
+      <div class="content">
+        <form action="/editStudent/<%=user._id %>" method="post">
+          <div class="form-group">
+            <label>Student Name</label>
+            <input type="text" name="name" value="<%= user.name %> " />
+          </div>
+
+          <div class="form-group">
+            <label>Father Name</label>
+            <input
+              type="text"
+              name="fatherName"
+              value="<%= user.fatherName %> "
+            />
+          </div>
+
+          <div class="form-group">
+            <label>Age</label>
+            <input type="number" name="age" value="<%= user.age %> " />
+          </div>
+
+          <div class="form-group">
+            <label>Roll Number</label>
+            <input type="text" name="rollNo" value="<%= user.rollNo %> " />
+          </div>
+
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" name="email" value="<%= user.email %> " />
+          </div>
+
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="text" name="phone" value="<%= user.phone %> " />
+          </div>
+
+          <div class="form-group full">
+            <label>Address</label>
+            <textarea name="address"><%= user.address %> </textarea>
+          </div>
+
+          <div class="buttons">
+            <button class="btn update" type="submit">Update Student</button>
+
+            <a href="/" class="btn cancel"> Cancel </a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
